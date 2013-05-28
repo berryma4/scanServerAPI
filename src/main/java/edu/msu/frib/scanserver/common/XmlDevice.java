@@ -13,13 +13,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = "device")
 public class XmlDevice {
 
-    @XmlElement
     private String device;
+
+    public XmlDevice(){
+    }
 
     public XmlDevice(String device){
         this.device = device;
     }
 
+    @XmlElement
     public String getDevice() {
         return device;
     }

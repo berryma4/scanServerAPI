@@ -25,6 +25,9 @@
         <module name="ScanServerAPI" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ScanServerAPI" target="1.6" />
+    </bytecodeTargetLevel>
   </component>
 </project>
 

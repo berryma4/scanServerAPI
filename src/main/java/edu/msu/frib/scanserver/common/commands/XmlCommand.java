@@ -1,4 +1,5 @@
-package edu.msu.frib.scanserver.common;
+package edu.msu.frib.scanserver.common.commands;
+
 
 /**
  * Created with IntelliJ IDEA.
@@ -7,5 +8,8 @@ package edu.msu.frib.scanserver.common;
  * Time: 12:48 PM
  * To change this template use File | Settings | File Templates.
  */
-public class XmlCommands {
+
+public class XmlCommand {
+    public XmlCommand() {
+    }
 }

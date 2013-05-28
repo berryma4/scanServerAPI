@@ -1,6 +1,5 @@
 package edu.msu.frib.scanserver.common;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**

@@ -1,10 +1,7 @@
 package edu.msu.frib.scanserver.common;
 
-import edu.msu.frib.scanserver.api.Scan;
-
-import javax.xml.bind.annotation.XmlElementRef;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,34 +13,33 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @XmlRootElement(name = "scans")
-public class XmlScans extends ArrayList<XmlScan> {
+public class XmlScans {
+
+    private List<XmlScan> scans = new ArrayList<XmlScan>();
 
     public XmlScans() {
     }
 
 
     public XmlScans(XmlScan xmlScan) {
-        this.add(xmlScan);
+        scans.add(xmlScan);
     }
 
     public XmlScans(List<XmlScan> xmlScans) {
-        this.addAll(xmlScans);
+        scans.addAll(xmlScans);
     }
 
-
-    @XmlElementRef(type = XmlScan.class, name = "scan")
-    public List<XmlScan> getXmlScanList() {
-        return this;
+    @XmlElement(name = "scan")
+    public List<XmlScan> getXmlScans() {
+        return scans;
     }
 
-    public void setXmlScanList(List<XmlScan> items) {
-        this.clear();
-        this.addAll(items);
+    public void setXmlScans(List<XmlScan> scans) {
+        this.scans = scans;
     }
-
 
     public void addXmlScan(XmlScan item) {
-        this.add(item);
+        scans.add(item);
     }
 
 

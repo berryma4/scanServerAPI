@@ -50,7 +50,7 @@ public class Scan {
             return scanBuilder;
         }
 
-        public Builder scan(Long id, String name, Date created, ScanState state, Date runtime, Long percentage, Date finish, String command, String error) {
+        public static Builder scan(Long id, String name, Date created, ScanState state, Date runtime, Long percentage, Date finish, String command, String error) {
             Builder scanBuilder = new Builder();
             scanBuilder.id = id;
             scanBuilder.name = name;

@@ -16,12 +16,13 @@ import java.util.logging.Logger;
 
 import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-import com.sun.jersey.api.client.UniformInterfaceException;
 
-import edu.msu.frib.scanserver.common.*;
+import com.sun.jersey.api.client.UniformInterfaceException;
+import edu.msu.frib.scanserver.api.commands.Command;
+import edu.msu.frib.scanserver.api.commands.CompositeCommand;
+import edu.msu.frib.scanserver.common.XmlScan;
+import edu.msu.frib.scanserver.common.XmlScans;
+import edu.msu.frib.scanserver.common.commands.XmlCompositeCommand;
 
 /**
  * Created with IntelliJ IDEA.
@@ -36,6 +37,7 @@ public class ScanServerClientImpl implements ScanServerClient {
 
     private static final String resourceScans = "scans";
     private static final String resourceScan = "scan";
+    private static final String resourceCommands = "commands";
 
     @Override
     public List<Scan> getAllScans() {
@@ -49,7 +51,7 @@ public class ScanServerClientImpl implements ScanServerClient {
                         .path(resourceScans)
                         .accept(MediaType.APPLICATION_XML)
                         .get(XmlScans.class);
-                for (XmlScan xmlScan : allXmlScans.getXmlScanList()) {
+                for (XmlScan xmlScan : allXmlScans.getXmlScans()) {
                     allScans.add(new Scan(xmlScan));
                 }
                 return allScans;
@@ -59,33 +61,71 @@ public class ScanServerClientImpl implements ScanServerClient {
     }
 
     @Override
-    public Scan getScan(long id) {
+    public Scan getScan(Long id) throws ScanServerException {
+        return wrappedSubmit(new GetScan(id));
+    }
+    private class GetScan implements Callable<Scan> {
+        private final Long id;
+
+        GetScan(Long id){
+            super();
+            this.id = id;
+        }
+
+        @Override
+        public Scan call() throws Exception {
+            XmlScan xmlScan = service
+                    .path(resourceScan)
+                    .path(this.id.toString())
+                    .accept(MediaType.APPLICATION_XML)
+                    .get(XmlScan.class);
+            return new Scan(xmlScan);
+        }
+    }
+
+    @Override
+    public Data getScanData(Long id) {
         return null;  //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public Data getScanData(long id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+    public CompositeCommand getScanCommands(Long id)  throws ScanServerException {
+        return wrappedSubmit(new GetScanCommands(id));
+    }
+
+    private class GetScanCommands implements Callable<CompositeCommand> {
+        private final Long id;
+
+        GetScanCommands(Long id){
+            super();
+            this.id = id;
+        }
+
+        @Override
+        public CompositeCommand call() throws Exception {
+            XmlCompositeCommand xmlCompositeCommand = service
+                    .path(resourceScan)
+                    .path(this.id.toString())
+                    .path(resourceCommands)
+                    .accept(MediaType.APPLICATION_XML)
+                    .get(XmlCompositeCommand.class);
+               return null;
+        }
     }
 
     @Override
-    public Commands getScanCommands(long id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
-    }
-
-    @Override
-    public void deleteScan(long id) {
+    public void deleteScan(Long id) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void delete(long id) {
+    public void delete(Long id) {
         //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
-    public void queueScan(String name, Commands commands) {
-        //To change body of implemented methods use File | Settings | File Templates.
+    public Long queueScan(String name, CompositeCommand commands) {
+        return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 
     @Override
