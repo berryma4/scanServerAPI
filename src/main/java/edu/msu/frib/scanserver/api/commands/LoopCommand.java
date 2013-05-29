@@ -1,9 +1,6 @@
 package edu.msu.frib.scanserver.api.commands;
 
-import edu.msu.frib.scanserver.common.commands.XmlCompositeCommand;
 import edu.msu.frib.scanserver.common.commands.XmlLoopCommand;
-
-import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -12,7 +9,7 @@ import java.util.List;
  * Time: 10:36 AM
  * To change this template use File | Settings | File Templates.
  */
-public class LoopCommand extends CompositeCommand {
+public class LoopCommand extends CommandComposite {
     private final long address;
     private final String device;
     private final double start;
@@ -23,7 +20,7 @@ public class LoopCommand extends CompositeCommand {
     private final double tolerance;
     private final double timeout;
 
-    public static class Builder {
+    public static abstract class Builder<T extends Builder<T>> extends CommandComposite.Builder<T> {
         private long address;
         private String device;
         private double start;
@@ -34,66 +31,63 @@ public class LoopCommand extends CompositeCommand {
         private double tolerance = 0.1;
         private double timeout = 0.0;
 
-        public static Builder loopCommand(LoopCommand loopCommand) {
-            Builder loopCommandBuilder = new Builder();
-            loopCommandBuilder.address = loopCommand.getAddress();
-            loopCommandBuilder.device = loopCommand.getDevice();
-            loopCommandBuilder.start = loopCommand.getStart();
-            loopCommandBuilder.end = loopCommand.getEnd();
-            loopCommandBuilder.step = loopCommand.getStep();
-            loopCommandBuilder.readback = loopCommand.getReadback();
-            loopCommandBuilder.wait = loopCommand.isWait();
-            loopCommandBuilder.tolerance = loopCommand.getTolerance();
-            loopCommandBuilder.timeout = loopCommand.getTimeout();
-
-            return loopCommandBuilder;
+        public T device(String device){
+            this.device = device;
+            return self();
         }
 
-        public static Builder loopCommand(String device){
-            Builder loopCommandBuilder = new Builder();
-            loopCommandBuilder.device = device;
-
-            return loopCommandBuilder;
-        }
-
-        public Builder address(long address){
+        public T address(long address){
             this.address = address;
-            return this;
+            return self();
         }
 
-        public Builder start(double start){
+        public T start(double start){
             this.start = start;
-            return this;
+            return self();
         }
 
-        public Builder end(double end){
+        public T end(double end){
             this.end = end;
-            return this;
+            return self();
         }
 
-        public Builder step(double step){
+        public T step(double step){
             this.step = step;
-            return this;
+            return self();
         }
 
-        public Builder readback(String readback){
+        public T readback(String readback){
             this.readback = readback;
-            return this;
+            return self();
         }
 
-        public Builder wait(boolean wait){
+        public T wait(boolean wait){
             this.wait = wait;
-            return this;
+            return self();
         }
 
-        public Builder tolerance(double tolerance){
+        public T tolerance(double tolerance){
             this.tolerance = tolerance;
-            return this;
+            return self();
         }
 
-        public Builder timeout(double timeout){
+        public T timeout(double timeout){
             this.timeout = timeout;
-            return this;
+            return self();
+        }
+
+        public T fromXml(XmlLoopCommand xmlLoopCommand){
+            this.address = xmlLoopCommand.getAddress();
+            this.device = xmlLoopCommand.getDevice();
+            this.start = xmlLoopCommand.getStart();
+            this.end = xmlLoopCommand.getEnd();
+            this.step = xmlLoopCommand.getStep();
+            this.readback = xmlLoopCommand.getReadback();
+            this.wait = xmlLoopCommand.isWait();
+            this.tolerance = xmlLoopCommand.getTolerance();
+            this.timeout = xmlLoopCommand.getTimeout();
+
+            return self();
         }
 
         XmlLoopCommand toXml(){
@@ -105,19 +99,19 @@ public class LoopCommand extends CompositeCommand {
         }
     }
 
-    LoopCommand (XmlLoopCommand xmlLoopCommand){
-        this.address = xmlLoopCommand.getAddress();
-        this.device = xmlLoopCommand.getDevice();
-        this.start = xmlLoopCommand.getStart();
-        this.end = xmlLoopCommand.getEnd();
-        this.step = xmlLoopCommand.getStep();
-        this.readback = xmlLoopCommand.getReadback();
-        this.wait = xmlLoopCommand.isWait();
-        this.tolerance = xmlLoopCommand.getTolerance();
-        this.timeout = xmlLoopCommand.getTimeout();
+    private static class Builder2 extends Builder<Builder2> {
+        @Override
+        protected Builder2 self() {
+            return this;
+        }
     }
 
-    private LoopCommand (Builder builder){
+    public static Builder<?> builder() {
+        return new Builder2();
+    }
+
+    protected  LoopCommand(Builder<?> builder) {
+        super(builder);
         this.address = builder.address;
         this.device = builder.device;
         this.start = builder.start;

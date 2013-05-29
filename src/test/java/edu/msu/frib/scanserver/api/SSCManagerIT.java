@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import edu.msu.frib.scanserver.api.commands.CompositeCommand;
+import edu.msu.frib.scanserver.api.commands.CommandSet;
 import edu.msu.frib.scanserver.api.commands.LogCommand;
 import edu.msu.frib.scanserver.api.commands.LoopCommand;
 import org.junit.AfterClass;
@@ -40,18 +40,18 @@ public class SSCManagerIT {
                 .create();
         Logger.getLogger(RawLoggingFilter.class.getName()).setLevel(Level.ALL);
         List<Scan> scans = ssc.getAllScans();
-        Scan scan = ssc.getScan(Long.valueOf(315));
-        scan.toString();
+        //Scan scan = ssc.getScan(Long.valueOf(315));
+        //scan.toString();
 
-        //CommandBuilder
-
-        LoopCommand loop = loopCommand("test").start(234).end(234).step(.01).build();
         LogCommand log = logCommand("test").build();
-        loop.addCommand(log);
+        LoopCommand loop2 = LoopCommand.builder().device("test").start(234).end(234).step(.01).add(log).build();
+        LoopCommand loop = LoopCommand.builder().device("test").start(234).end(234).step(.01).add(log).add(loop2).build();
+        CommandSet commands = CommandSet.builder().add(loop).build();
 
 
 
-        CompositeCommand commands = ssc.getScanCommands(Long.valueOf(315));
+
+        //CommandComposite commandComposite = ssc.getScanCommands(Long.valueOf(315));
         Logger.getLogger(RawLoggingFilter.class.getName()).setLevel(Level.OFF);
 
     }

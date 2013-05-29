@@ -18,8 +18,7 @@ import java.util.concurrent.Callable;
 import java.util.concurrent.ExecutionException;
 
 import com.sun.jersey.api.client.UniformInterfaceException;
-import edu.msu.frib.scanserver.api.commands.Command;
-import edu.msu.frib.scanserver.api.commands.CompositeCommand;
+import edu.msu.frib.scanserver.api.commands.CommandComposite;
 import edu.msu.frib.scanserver.common.XmlScan;
 import edu.msu.frib.scanserver.common.XmlScans;
 import edu.msu.frib.scanserver.common.commands.XmlCompositeCommand;
@@ -89,11 +88,11 @@ public class ScanServerClientImpl implements ScanServerClient {
     }
 
     @Override
-    public CompositeCommand getScanCommands(Long id)  throws ScanServerException {
+    public CommandComposite getScanCommands(Long id)  throws ScanServerException {
         return wrappedSubmit(new GetScanCommands(id));
     }
 
-    private class GetScanCommands implements Callable<CompositeCommand> {
+    private class GetScanCommands implements Callable<CommandComposite> {
         private final Long id;
 
         GetScanCommands(Long id){
@@ -102,7 +101,7 @@ public class ScanServerClientImpl implements ScanServerClient {
         }
 
         @Override
-        public CompositeCommand call() throws Exception {
+        public CommandComposite call() throws Exception {
             XmlCompositeCommand xmlCompositeCommand = service
                     .path(resourceScan)
                     .path(this.id.toString())
@@ -124,7 +123,7 @@ public class ScanServerClientImpl implements ScanServerClient {
     }
 
     @Override
-    public Long queueScan(String name, CompositeCommand commands) {
+    public Long queueScan(String name, CommandComposite commandComposite) {
         return null; //To change body of implemented methods use File | Settings | File Templates.
     }
 

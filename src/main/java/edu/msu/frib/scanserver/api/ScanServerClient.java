@@ -1,6 +1,6 @@
 package edu.msu.frib.scanserver.api;
 
-import edu.msu.frib.scanserver.api.commands.CompositeCommand;
+import edu.msu.frib.scanserver.api.commands.CommandComposite;
 
 import java.util.List;
 
@@ -19,13 +19,13 @@ public interface ScanServerClient {
 
     public Data getScanData(Long id);
 
-    public CompositeCommand getScanCommands(Long id);
+    public CommandComposite getScanCommands(Long id);
 
     public void deleteScan(Long id);
 
     public void delete(Long id);
 
-    public Long queueScan(String name, CompositeCommand commands);
+    public Long queueScan(String name, CommandComposite commandComposite);
 
     public void close();
 }

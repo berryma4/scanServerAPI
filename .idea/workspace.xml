@@ -2,50 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f261eed8-53f2-4cf3-8258-513a9eb9910b" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CompositeCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/DelayCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LogCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServer.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/ScriptCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/SetCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/WaitCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCompositeCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlDelayCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlLogCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlLoopCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlScriptCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlSetCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlWaitCommand.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/package-info.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/package-info.java" />
-      <change type="DELETED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\.idea\libraries\Maven__com_sun_jersey_jersey_client_1_1_5_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\.idea\libraries\Maven__com_sun_jersey_jersey_core_1_1_5_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\.idea\libraries\Maven__javax_ws_rs_jsr311_api_1_1_1.xml" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\src\main\java\edu\msu\frib\scanserver\api\Command.java" afterPath="" />
-      <change type="MOVED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\src\main\java\edu\msu\frib\scanserver\common\XmlCommands.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCommand.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/DateAdapter.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/DateAdapter.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandComposite.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandSet.java" />
+      <change type="DELETED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\src\main\java\edu\msu\frib\scanserver\api\LogCommand.java" afterPath="" />
+      <change type="DELETED" beforePath="C:\Users\berryman\Desktop\ScanServerAPI\src\main\java\edu\msu\frib\scanserver\api\commands\CompositeCommand.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/SSCManagerIT.java" afterPath="$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/SSCManagerIT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/Scan.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/Scan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/ScanIT.java" afterPath="$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/ScanIT.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScanServerAPI.iml" afterPath="$PROJECT_DIR$/ScanServerAPI.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClient.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClient.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlData.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlDevice.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlDevice.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlScan.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlScan.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlScans.java" afterPath="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlScans.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/config/scanServer.properties" afterPath="$PROJECT_DIR$/src/main/resources/config/scanServer.properties" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="ScanServerAPI.iws" />
     <ignored path=".idea/workspace.xml" />
-    <file path="/fragment.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369752284375" ignored="false" />
+    <file path="/fragment.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369842113217" ignored="false" />
     <file path="/Scans.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369156986605" ignored="false" />
     <file path="/XmlScans.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369428430984" ignored="false" />
     <file path="/XmlScan.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369760927579" ignored="false" />
@@ -61,20 +30,20 @@
     <file path="/SSCProperties.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369168583102" ignored="false" />
     <file path="/Scan.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369759605679" ignored="false" />
     <file path="/scanServer.properties" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369338651255" ignored="false" />
-    <file path="/SSCManagerIT.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369772804136" ignored="false" />
+    <file path="/SSCManagerIT.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369842449229" ignored="false" />
     <file path="/ScanIT.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369750843464" ignored="false" />
-    <file path="/Dummy.txt" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369773015347" ignored="false" />
+    <file path="/Dummy.txt" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369773071835" ignored="false" />
     <file path="/pom.xml" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369405948818" ignored="false" />
     <file path="/ScanServer.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369343108240" ignored="false" />
     <file path="/package-info.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369401907404" ignored="false" />
-    <file path="/Commands.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369751564801" ignored="false" />
-    <file path="/CompositeCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369770587655" ignored="false" />
-    <file path="/LogCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369772608753" ignored="false" />
-    <file path="/DelayCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369770761187" ignored="false" />
-    <file path="/LoopCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369766574311" ignored="false" />
-    <file path="/SetCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369770830566" ignored="false" />
-    <file path="/ScriptCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369770825094" ignored="false" />
-    <file path="/WaitCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369770834974" ignored="false" />
+    <file path="/Commands.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369839746770" ignored="false" />
+    <file path="/CompositeCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369832399924" ignored="false" />
+    <file path="/LogCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369830664580" ignored="false" />
+    <file path="/DelayCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369836530606" ignored="false" />
+    <file path="/LoopCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369841257995" ignored="false" />
+    <file path="/SetCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369830691007" ignored="false" />
+    <file path="/ScriptCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369830686835" ignored="false" />
+    <file path="/WaitCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369830695624" ignored="false" />
     <file path="/XmlWaitCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369752113250" ignored="false" />
     <file path="/XmlSetCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369752150096" ignored="false" />
     <file path="/XmlScriptCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369752180926" ignored="false" />
@@ -82,7 +51,10 @@
     <file path="/XmlLogCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369758373364" ignored="false" />
     <file path="/XmlDelayCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369758578608" ignored="false" />
     <file path="/XmlCompositeCommand.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369759887093" ignored="false" />
-    <file path="/Command.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369770617603" ignored="false" />
+    <file path="/Command.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369842670075" ignored="false" />
+    <file path="/CommandBuilder.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369837798316" ignored="false" />
+    <file path="/CommandComposite.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369841832592" ignored="false" />
+    <file path="/CommandSet.java" changelist="f261eed8-53f2-4cf3-8258-513a9eb9910b" time="1369842259243" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +167,7 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" line="105" class="edu.msu.frib.scanserver.api.ScanServerClientImpl.GetScanCommands" package="edu.msu.frib.scanserver.api">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" line="104" class="edu.msu.frib.scanserver.api.ScanServerClientImpl.GetScanCommands" package="edu.msu.frib.scanserver.api">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -210,7 +182,22 @@
         <option name="CONDITION" value="" />
         <option name="LOG_MESSAGE" value="" />
       </breakpoint>
-      <breakpoint url="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" line="111" class="edu.msu.frib.scanserver.api.ScanServerClientImpl.GetScanCommands" package="edu.msu.frib.scanserver.api">
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" line="110" class="edu.msu.frib.scanserver.api.ScanServerClientImpl.GetScanCommands" package="edu.msu.frib.scanserver.api">
+        <option name="ENABLED" value="true" />
+        <option name="LOG_ENABLED" value="false" />
+        <option name="LOG_EXPRESSION_ENABLED" value="false" />
+        <option name="REMOVE_AFTER_HIT" value="false" />
+        <option name="SUSPEND_POLICY" value="SuspendAll" />
+        <option name="SUSPEND" value="true" />
+        <option name="COUNT_FILTER_ENABLED" value="false" />
+        <option name="COUNT_FILTER" value="0" />
+        <option name="CONDITION_ENABLED" value="true" />
+        <option name="CLASS_FILTERS_ENABLED" value="false" />
+        <option name="INSTANCE_FILTERS_ENABLED" value="false" />
+        <option name="CONDITION" value="" />
+        <option name="LOG_MESSAGE" value="" />
+      </breakpoint>
+      <breakpoint url="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java" line="55" class="edu.msu.frib.scanserver.api.commands.LoopCommand.Builder" package="edu.msu.frib.scanserver.api.commands">
         <option name="ENABLED" value="true" />
         <option name="LOG_ENABLED" value="false" />
         <option name="LOG_EXPRESSION_ENABLED" value="false" />
@@ -235,10 +222,31 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
+      <file leaf-file-name="CommandComposite.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandComposite.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="14" column="13" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0">
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#533#542#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoopCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="35" column="26" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="XmlCompositeCommand.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCompositeCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="76" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0">
+            <state line="15" column="32" selection-start="367" selection-end="386" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#451#472#0" expanded="true" />
@@ -247,48 +255,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="XmlDelayCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlDelayCommand.java">
+      <file leaf-file-name="XmlCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="347" selection-end="347" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XmlLogCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlLogCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="4" selection-start="485" selection-end="1030" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#558#569#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="XmlLoopCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlLoopCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="13" selection-start="346" selection-end="346" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CompositeCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CompositeCommand.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="42" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#435#444#0" expanded="true" />
-              </folding>
+            <state line="11" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -296,7 +267,7 @@
       <file leaf-file-name="LogCommand.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LogCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="42" column="49" selection-start="1368" selection-end="1368" vertical-scroll-proportion="0.0">
+            <state line="18" column="4" selection-start="492" selection-end="519" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#676#684#0" expanded="true" />
@@ -307,13 +278,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoopCommand.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java">
+      <file leaf-file-name="SetCommand.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/SetCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="107" column="0" selection-start="3101" selection-end="3251" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state line="9" column="42" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -321,16 +290,7 @@
       <file leaf-file-name="DelayCommand.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/DelayCommand.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="36" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Command.java" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
+            <state line="9" column="26" selection-start="230" selection-end="248" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -339,10 +299,28 @@
       <file leaf-file-name="SSCManagerIT.java" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/SSCManagerIT.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="45" column="24" selection-start="1390" selection-end="1390" vertical-scroll-proportion="1.0652483">
+            <state line="50" column="103" selection-start="1724" selection-end="1724" vertical-scroll-proportion="0.67113096">
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CommandSet.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandSet.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Command.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="12" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -365,22 +343,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlDelayCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/Scan.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/XmlScan.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClient.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/ScanIT.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/ScanServerClientImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCompositeCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CompositeCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/DelayCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/ScriptCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/SetCommand.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/WaitCommand.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LogCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandBuilder.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Commands.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandComposite.java" />
         <option value="$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/SSCManagerIT.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LogCommand.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandSet.java" />
       </list>
     </option>
   </component>
@@ -392,10 +370,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="594" />
-    <option name="y" value="87" />
-    <option name="width" value="1798" />
-    <option name="height" value="1267" />
+    <option name="x" value="308" />
+    <option name="y" value="60" />
+    <option name="width" value="1436" />
+    <option name="height" value="1219" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -643,6 +621,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="edu.msu.frib.scanserver.api.commands" />
       <recent name="edu.msu.frib.scanserver.common" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -837,31 +816,36 @@
       <created>1369154290674</created>
       <updated>1369154290674</updated>
     </task>
+    <task id="LOCAL-00001" summary="first attempt">
+      <created>1369773079673</created>
+      <updated>1369773079673</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="594" y="87" width="1798" height="1267" extended-state="0" />
+    <frame x="308" y="60" width="1436" height="1219" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="JetGradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32991612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3987511" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.36547735" sideWeight="0.5002919" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32917038" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.22926375" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32917038" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19036697" sideWeight="0.6708296" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24023154" sideWeight="0.6700839" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.338091" sideWeight="0.49970812" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -931,55 +915,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlSetCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="13" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlWaitCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="9" column="13" selection-start="220" selection-end="220" vertical-scroll-proportion="0.0">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/ScriptCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="37" selection-start="241" selection-end="241" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/SetCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="34" selection-start="238" selection-end="238" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/WaitCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="14" selection-start="252" selection-end="252" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCompositeCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="76" selection-start="779" selection-end="779" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#451#472#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1001,30 +940,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="0" selection-start="256" selection-end="256" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/DelayCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="36" selection-start="240" selection-end="240" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CompositeCommand.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="42" selection-start="525" selection-end="525" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#435#444#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlLogCommand.java">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="4" selection-start="485" selection-end="1030" vertical-scroll-proportion="0.0">
@@ -1035,9 +950,68 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/ScriptCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="45" selection-start="249" selection-end="249" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/WaitCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="43" selection-start="247" selection-end="247" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="13" selection-start="222" selection-end="222" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/DelayCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="26" selection-start="230" selection-end="248" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="26" selection-start="1119" selection-end="1119" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/SetCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="42" selection-start="246" selection-end="246" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/common/commands/XmlCompositeCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="32" selection-start="367" selection-end="386" vertical-scroll-proportion="0.0">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#451#472#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/Command.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="12" column="24" selection-start="253" selection-end="253" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LogCommand.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="42" column="49" selection-start="1368" selection-end="1368" vertical-scroll-proportion="0.0">
+        <state line="18" column="4" selection-start="492" selection-end="519" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#676#684#0" expanded="true" />
@@ -1047,18 +1021,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/LoopCommand.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandComposite.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="107" column="0" selection-start="3101" selection-end="3251" vertical-scroll-proportion="0.0">
+        <state line="14" column="13" selection-start="329" selection-end="329" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#533#542#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/msu/frib/scanserver/api/commands/CommandSet.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="0" selection-start="422" selection-end="422" vertical-scroll-proportion="0.0">
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/edu/msu/frib/scanserver/api/SSCManagerIT.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="45" column="24" selection-start="1390" selection-end="1390" vertical-scroll-proportion="1.0652483">
+        <state line="50" column="103" selection-start="1724" selection-end="1724" vertical-scroll-proportion="0.67113096">
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
