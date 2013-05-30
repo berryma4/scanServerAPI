@@ -11,7 +11,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * To change this template use File | Settings | File Templates.
  */
 @XmlRootElement(name = "delay")
-public class XmlDelayCommand extends XmlCommand {
+public class XmlDelayCommand implements XmlCommand {
     private double seconds;
 
     private XmlDelayCommand(){

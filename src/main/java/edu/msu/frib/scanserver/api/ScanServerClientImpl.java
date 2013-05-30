@@ -19,9 +19,12 @@ import java.util.concurrent.ExecutionException;
 
 import com.sun.jersey.api.client.UniformInterfaceException;
 import edu.msu.frib.scanserver.api.commands.CommandComposite;
+import edu.msu.frib.scanserver.api.commands.CommandSet;
 import edu.msu.frib.scanserver.common.XmlScan;
 import edu.msu.frib.scanserver.common.XmlScans;
-import edu.msu.frib.scanserver.common.commands.XmlCompositeCommand;
+import edu.msu.frib.scanserver.common.commands.XmlCommand;
+import edu.msu.frib.scanserver.common.commands.XmlCommandSet;
+import static edu.msu.frib.scanserver.api.commands.LoopCommand.Builder.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -88,11 +91,11 @@ public class ScanServerClientImpl implements ScanServerClient {
     }
 
     @Override
-    public CommandComposite getScanCommands(Long id)  throws ScanServerException {
+    public CommandSet getScanCommands(Long id)  throws ScanServerException {
         return wrappedSubmit(new GetScanCommands(id));
     }
 
-    private class GetScanCommands implements Callable<CommandComposite> {
+    private class GetScanCommands implements Callable<CommandSet> {
         private final Long id;
 
         GetScanCommands(Long id){
@@ -101,14 +104,15 @@ public class ScanServerClientImpl implements ScanServerClient {
         }
 
         @Override
-        public CommandComposite call() throws Exception {
-            XmlCompositeCommand xmlCompositeCommand = service
+        public CommandSet call() throws Exception {
+            XmlCommandSet xmlCommandSet = service
                     .path(resourceScan)
                     .path(this.id.toString())
                     .path(resourceCommands)
                     .accept(MediaType.APPLICATION_XML)
-                    .get(XmlCompositeCommand.class);
-               return null;
+                    .get(XmlCommandSet.class);
+            List<XmlCommand> xmlCommands = xmlCommandSet.getCommands();
+            return CommandSet.builder().fromXml(xmlCommands).build();
         }
     }
 

@@ -1,6 +1,12 @@
 package edu.msu.frib.scanserver.api.commands;
 
+import edu.msu.frib.scanserver.common.commands.XmlCommand;
+import edu.msu.frib.scanserver.common.commands.XmlCommandSet;
 import edu.msu.frib.scanserver.common.commands.XmlLoopCommand;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,16 +17,7 @@ import edu.msu.frib.scanserver.common.commands.XmlLoopCommand;
  */
 public class CommandSet extends CommandComposite {
 
-
     public static abstract class Builder<T extends Builder<T>> extends CommandComposite.Builder<T> {
-
-        //public T fromXml(CommandSet commandSet){
-        //    return self();
-        //}
-
-        //XmlCommandSet toXml(){
-        //    return null;
-        //}
 
         public CommandSet build(){
             return new CommandSet(this);

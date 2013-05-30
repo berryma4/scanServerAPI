@@ -7,5 +7,5 @@ package edu.msu.frib.scanserver.common.commands;
  * Time: 10:39 AM
  * To change this template use File | Settings | File Templates.
  */
-public class XmlWaitCommand extends XmlCommand {
+public class XmlWaitCommand implements XmlCommand {
 }

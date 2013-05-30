@@ -1,7 +1,11 @@
 package edu.msu.frib.scanserver.common.commands;
 
+import javax.xml.bind.annotation.XmlAnyElement;
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,17 +15,19 @@ import javax.xml.bind.annotation.XmlRootElement;
  * To change this template use File | Settings | File Templates.
  */
 @XmlRootElement(name = "loop")
-public class XmlLoopCommand extends XmlCompositeCommand {
+public class XmlLoopCommand implements XmlCommand {
+
+    private List<XmlCommand> body = new ArrayList<XmlCommand>();
 
     private long address;
     private String device;
     private double start;
     private double end;
     private double step;
-    private String readback = "";
-    private boolean wait = true;
-    private double tolerance = 0.1;
-    private double timeout = 0.0;
+    private String readback;
+    private boolean wait;
+    private double tolerance;
+    private double timeout;
 
 
     public XmlLoopCommand() {
@@ -29,6 +35,16 @@ public class XmlLoopCommand extends XmlCompositeCommand {
 
     public XmlLoopCommand(String device) {
         this.device = device;
+    }
+
+    @XmlElementWrapper
+    @XmlAnyElement(lax=true)
+    public List<XmlCommand> getBody() {
+        return body;
+    }
+
+    public void setBody(List<XmlCommand> body) {
+        this.body = body;
     }
 
     @XmlElement

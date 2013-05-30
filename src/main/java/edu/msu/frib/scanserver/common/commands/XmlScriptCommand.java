@@ -7,5 +7,5 @@ package edu.msu.frib.scanserver.common.commands;
  * Time: 10:38 AM
  * To change this template use File | Settings | File Templates.
  */
-public class XmlScriptCommand extends XmlCommand {
+public class XmlScriptCommand implements XmlCommand {
 }

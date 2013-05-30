@@ -15,44 +15,39 @@ import java.util.List;
  * Time: 10:35 AM
  * To change this template use File | Settings | File Templates.
  */
-public class LogCommand implements Command {
+public class LogCommand extends Commands {
     private final long address;
     private final List<String> devices;
 
-    public static class Builder{
+    public static abstract class Builder<T extends Builder<T>> extends Commands.Builder<T> {
         private long address;
         private List<String> devices = new ArrayList<String>();
 
-        public static Builder logCommand(LogCommand logCommand){
-            Builder logCommandBuilder = new Builder();
-            logCommandBuilder.devices = logCommand.getDevices();
-            logCommandBuilder.address = logCommand.getAddress();
 
-            return logCommandBuilder;
-        }
-
-        public static Builder logCommand(List<String> devices){
-            Builder logCommandBuilder = new Builder();
-            logCommandBuilder.devices = devices;
-
-            return logCommandBuilder;
-        }
-
-        public static Builder logCommand(String device){
-            Builder logCommandBuilder = new Builder();
-            logCommandBuilder.devices.add(device);
-
-            return logCommandBuilder;
-        }
-
-        public Builder add(String device){
+        public T device(String device){
             this.devices.add(device);
-            return this;
+            return self();
         }
 
-        public Builder add(List<String> devices){
+        public T devices(List<String> devices){
             this.devices.addAll(devices);
-            return this;
+            return self();
+        }
+
+        public T address(long address){
+            this.address = address;
+            return self();
+        }
+
+        public T fromXml (XmlLogCommand xmlLogCommand){
+            this.address = xmlLogCommand.getAddress();
+            List<String> devices = new ArrayList<String>();
+            for(XmlDevice xmlDevice:xmlLogCommand.getDevices()){
+                devices.add(xmlDevice.getDevice());
+            }
+            this.devices = Collections.unmodifiableList(devices);
+
+            return self();
         }
 
         XmlLogCommand toXml(){
@@ -72,17 +67,20 @@ public class LogCommand implements Command {
         }
 
     }
-
-    LogCommand (XmlLogCommand xmlLogCommand){
-        this.address = xmlLogCommand.getAddress();
-        List<String> devices = new ArrayList<String>();
-        for(XmlDevice xmlDevice:xmlLogCommand.getDevices()){
-            devices.add(xmlDevice.getDevice());
+    private static class Builder2 extends Builder<Builder2> {
+        @Override
+        protected Builder2 self() {
+            return this;
         }
-        this.devices = Collections.unmodifiableList(devices);
     }
 
-    private LogCommand(Builder builder) {
+    public static Builder<?> builder() {
+        return new Builder2();
+    }
+
+
+    private LogCommand(Builder<?> builder) {
+        super(builder);
         this.address = builder.address;
         this.devices = builder.devices;
     }

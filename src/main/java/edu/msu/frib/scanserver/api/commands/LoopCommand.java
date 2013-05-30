@@ -2,6 +2,8 @@ package edu.msu.frib.scanserver.api.commands;
 
 import edu.msu.frib.scanserver.common.commands.XmlLoopCommand;
 
+import java.lang.reflect.InvocationTargetException;
+
 /**
  * Created with IntelliJ IDEA.
  * User: berryman
@@ -76,7 +78,7 @@ public class LoopCommand extends CommandComposite {
             return self();
         }
 
-        public T fromXml(XmlLoopCommand xmlLoopCommand){
+        public T fromXml(XmlLoopCommand xmlLoopCommand) throws ClassNotFoundException, NoSuchMethodException, IllegalAccessException, InvocationTargetException {
             this.address = xmlLoopCommand.getAddress();
             this.device = xmlLoopCommand.getDevice();
             this.start = xmlLoopCommand.getStart();
@@ -86,7 +88,7 @@ public class LoopCommand extends CommandComposite {
             this.wait = xmlLoopCommand.isWait();
             this.tolerance = xmlLoopCommand.getTolerance();
             this.timeout = xmlLoopCommand.getTimeout();
-
+            this.add(CommandSet.builder().fromXml(xmlLoopCommand.getBody()).build().getCommands());
             return self();
         }
 

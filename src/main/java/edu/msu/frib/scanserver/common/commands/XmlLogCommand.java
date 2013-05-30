@@ -15,7 +15,7 @@ import java.util.List;
  * To change this template use File | Settings | File Templates.
  */
 @XmlRootElement(name = "log")
-public class XmlLogCommand extends XmlCommand {
+public class XmlLogCommand implements XmlCommand {
     private long address;
     private List<XmlDevice> devices = new ArrayList<XmlDevice>();
 

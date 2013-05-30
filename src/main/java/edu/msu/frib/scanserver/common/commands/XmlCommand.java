@@ -1,6 +1,9 @@
 package edu.msu.frib.scanserver.common.commands;
 
 
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlSeeAlso;
+
 /**
  * Created with IntelliJ IDEA.
  * User: berryman
@@ -9,7 +12,6 @@ package edu.msu.frib.scanserver.common.commands;
  * To change this template use File | Settings | File Templates.
  */
 
-public class XmlCommand {
-    public XmlCommand() {
-    }
+public interface XmlCommand {
+
 }
