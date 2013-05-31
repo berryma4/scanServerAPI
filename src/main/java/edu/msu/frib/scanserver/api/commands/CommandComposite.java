@@ -35,7 +35,7 @@ public class CommandComposite implements Command {
         }
 
         public T fromXml(List<XmlCommand> xmlCommands) throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-            for(XmlCommand xmlCommand:xmlCommands){
+            for(XmlCommand xmlCommand : xmlCommands){
                 String classString = xmlCommand.getClass().getName().replace("common","api").replace("Xml","");
                 Class commandClass = Class.forName(classString);
                 Method builderMethod = commandClass.getMethod("builder");

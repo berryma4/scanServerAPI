@@ -1,6 +1,7 @@
 package edu.msu.frib.scanserver.api;
 
 import edu.msu.frib.scanserver.api.commands.CommandComposite;
+import edu.msu.frib.scanserver.api.commands.CommandSet;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public interface ScanServerClient {
 
     public void delete(Long id);
 
-    public Long queueScan(String name, CommandComposite commandComposite);
+    public Long queueScan(String name, CommandSet.Builder commandSetBuilder);
 
     public void close();
 }

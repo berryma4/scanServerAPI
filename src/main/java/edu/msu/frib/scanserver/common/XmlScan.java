@@ -1,6 +1,5 @@
 package edu.msu.frib.scanserver.common;
 
-import edu.msu.frib.scanserver.common.commands.XmlCompositeCommand;
 
 import java.util.Date;
 

@@ -20,6 +20,8 @@ import java.util.concurrent.ExecutionException;
 import com.sun.jersey.api.client.UniformInterfaceException;
 import edu.msu.frib.scanserver.api.commands.CommandComposite;
 import edu.msu.frib.scanserver.api.commands.CommandSet;
+import edu.msu.frib.scanserver.common.XmlData;
+import edu.msu.frib.scanserver.common.XmlId;
 import edu.msu.frib.scanserver.common.XmlScan;
 import edu.msu.frib.scanserver.common.XmlScans;
 import edu.msu.frib.scanserver.common.commands.XmlCommand;
@@ -40,6 +42,7 @@ public class ScanServerClientImpl implements ScanServerClient {
     private static final String resourceScans = "scans";
     private static final String resourceScan = "scan";
     private static final String resourceCommands = "commands";
+    private static final String resourceData = "data";
 
     @Override
     public List<Scan> getAllScans() {
@@ -66,6 +69,7 @@ public class ScanServerClientImpl implements ScanServerClient {
     public Scan getScan(Long id) throws ScanServerException {
         return wrappedSubmit(new GetScan(id));
     }
+
     private class GetScan implements Callable<Scan> {
         private final Long id;
 
@@ -87,7 +91,27 @@ public class ScanServerClientImpl implements ScanServerClient {
 
     @Override
     public Data getScanData(Long id) {
-        return null;  //To change body of implemented methods use File | Settings | File Templates.
+        return wrappedSubmit(new GetScanData(id));
+    }
+
+    private class GetScanData implements Callable<Data> {
+        private final Long id;
+
+        GetScanData(Long id){
+            super();
+            this.id = id;
+        }
+
+        @Override
+        public Data call() throws Exception {
+            XmlData xmlData = service
+                    .path(resourceScan)
+                    .path(this.id.toString())
+                    .path(resourceData)
+                    .accept(MediaType.APPLICATION_XML)
+                    .get(XmlData.class);
+            return Data.builder().fromXml(xmlData).build();
+        }
     }
 
     @Override
@@ -118,17 +142,55 @@ public class ScanServerClientImpl implements ScanServerClient {
 
     @Override
     public void deleteScan(Long id) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        wrappedSubmit(new DeleteScan(id));
+    }
+    private class DeleteScan implements Runnable {
+        private final Long id;
+
+        DeleteScan(Long id){
+            super();
+            this.id = id;
+        }
+
+        @Override
+        public void run(){
+            service
+                    .path(resourceScan)
+                    .path(this.id.toString())
+                    .accept(MediaType.APPLICATION_XML)
+                    .delete();
+        }
     }
 
     @Override
     public void delete(Long id) {
-        //To change body of implemented methods use File | Settings | File Templates.
+        wrappedSubmit(new DeleteScan(id));
     }
 
     @Override
-    public Long queueScan(String name, CommandComposite commandComposite) {
-        return null; //To change body of implemented methods use File | Settings | File Templates.
+    public Long queueScan(String name, CommandSet.Builder commandSetBuilder) {
+        return wrappedSubmit(new QueueScan(name,commandSetBuilder));
+    }
+
+    private class QueueScan implements Callable<Long> {
+        private final String name;
+        private final CommandSet.Builder commandSetBuilder;
+
+        QueueScan(String name, CommandSet.Builder commandSetBuilder){
+            super();
+            this.name = name;
+            this.commandSetBuilder = commandSetBuilder;
+        }
+
+        @Override
+        public Long call() throws Exception {
+            XmlId xmlId = service
+                    .path(resourceScan)
+                    .path(this.name)
+                    .accept(MediaType.APPLICATION_XML)
+                    .post(XmlId.class,commandSetBuilder.toXml());
+            return xmlId.getId();
+        }
     }
 
     @Override
