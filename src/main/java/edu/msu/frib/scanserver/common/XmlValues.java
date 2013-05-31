@@ -1,6 +1,7 @@
 package edu.msu.frib.scanserver.common;
 
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.util.Date;
 import java.util.List;
 
@@ -11,17 +12,16 @@ import java.util.List;
  * Time: 3:25 PM
  * To change this template use File | Settings | File Templates.
  */
+@XmlRootElement(name="values")
 public class XmlValues {
 
-    @XmlElement
     private Date time;
-
-    @XmlElement(name="value")
     private List<Float> value;
 
     public XmlValues(Date time){
     }
 
+    @XmlElement
     public Date getTime() {
         return time;
     }
@@ -30,6 +30,7 @@ public class XmlValues {
         this.time = time;
     }
 
+    @XmlElement
     public List<Float> getValueList() {
         return value;
     }

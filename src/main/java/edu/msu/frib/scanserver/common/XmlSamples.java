@@ -1,5 +1,6 @@
 package edu.msu.frib.scanserver.common;
 
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementRef;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.List;
@@ -17,7 +18,7 @@ public class XmlSamples {
 
     private List<XmlValues> values;
 
-    @XmlElementRef(type = XmlValues.class, name = "values")
+    @XmlElement
     public List<XmlValues> getXmlValuesList() {
         return values;
     }

@@ -15,17 +15,13 @@ import java.util.List;
 
 @XmlRootElement(name = "data")
 public class XmlData {
-
-    @XmlElement(name = "devices")
     private List<String> devices;
-
-    @XmlElement
     private XmlSamples samples;
-
 
     public XmlData(){
     }
 
+    @XmlElement
     public List<String> getXmlDeviceList() {
         return devices;
     }
@@ -34,6 +30,7 @@ public class XmlData {
         this.devices = devices;
     }
 
+    @XmlElement
     public XmlSamples getSamples() {
         return samples;
     }
