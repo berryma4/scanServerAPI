@@ -12,6 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @XmlRootElement(name = "delay")
 public class XmlDelayCommand implements XmlCommand {
+    private long address;
     private double seconds;
 
     private XmlDelayCommand(){
@@ -28,5 +29,14 @@ public class XmlDelayCommand implements XmlCommand {
 
     public void setSeconds(double seconds) {
         this.seconds = seconds;
+    }
+
+    @XmlElement
+    public long getAddress() {
+        return address;
+    }
+
+    public void setAddress(long address) {
+        this.address = address;
     }
 }
