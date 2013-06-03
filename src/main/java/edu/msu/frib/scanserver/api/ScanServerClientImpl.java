@@ -110,7 +110,8 @@ public class ScanServerClientImpl implements ScanServerClient {
                     .path(resourceData)
                     .accept(MediaType.APPLICATION_XML)
                     .get(XmlData.class);
-            return Data.builder().fromXml(xmlData).build();
+            return new Data();
+            //return xmlData.builder().fromXml(xmlData).build();
         }
     }
 
@@ -230,10 +231,11 @@ public class ScanServerClientImpl implements ScanServerClient {
 
     public static class SSCBuilder {
         // required
-        private URI uri = null;
+    	private URI uri = null;
 
+    	private WebResource service = null;
+    	
         private ClientConfig clientConfig = null;
-
 
 
         private String protocol = null;
@@ -255,6 +257,11 @@ public class ScanServerClientImpl implements ScanServerClient {
             this.protocol = this.uri.getScheme();
         }
 
+        private SSCBuilder(WebResource service) {
+            this(service.getURI());
+        	this.service = service;
+        }
+        
         /**
          * Creates a {@link SSCBuilder} for a CF client to Default URL in the
          * scanServer.properties.
@@ -286,7 +293,16 @@ public class ScanServerClientImpl implements ScanServerClient {
             return new SSCBuilder(uri);
         }
 
-
+        /**
+         * Creates a {@link SSCBuilder} for a scanService client using the specified {@link WebResource} <tt>service</tt>
+         * 
+         * @param service
+         * @return {@link SSCBuilder}
+         */
+        public static SSCBuilder service(WebResource service) {
+        	return new SSCBuilder(service);
+        }
+        
         /**
          * set the {@link ClientConfig} to be used while creating the
          * channelfinder client connection.
@@ -299,6 +315,7 @@ public class ScanServerClientImpl implements ScanServerClient {
             return this;
         }
 
+        
         /**
          * Provide your own executor on which the queries are to be made. <br>
          * By default a single threaded executor is used.
@@ -318,12 +335,21 @@ public class ScanServerClientImpl implements ScanServerClient {
          * @return {@link ScanServerClientImpl}
          */
         public ScanServerClient create() throws ScanServerException {
+            if (this.service != null) {
+            	return new ScanServerClientImpl(this.service, this.executor);
+            }
+        	
+            if (this.clientConfig != null) {
+            	return new ScanServerClientImpl(this.uri, this.clientConfig, this.executor);
+            }
+            
             if (this.protocol.equalsIgnoreCase("http")) { //$NON-NLS-1$
                 this.clientConfig = new DefaultClientConfig();
             }
             return new ScanServerClientImpl(this.uri, this.clientConfig, this.executor);
         }
-
+      
+        
         private String ifNullReturnPreferenceValue(String value, String key,
                                                    String Default) {
             if (value == null) {
@@ -333,6 +359,9 @@ public class ScanServerClientImpl implements ScanServerClient {
             }
         }
     }
+    
+    
+    
     ScanServerClientImpl(URI uri, ClientConfig config, ExecutorService executor) {
         Client client = Client.create(config);
 
@@ -341,5 +370,10 @@ public class ScanServerClientImpl implements ScanServerClient {
         client.setFollowRedirects(true);
         service = client.resource(UriBuilder.fromUri(uri).build());
         this.executor = executor;
+    }
+    
+    ScanServerClientImpl(WebResource service, ExecutorService executor) {
+    	this.service = service;
+    	this.executor = executor;
     }
 }
