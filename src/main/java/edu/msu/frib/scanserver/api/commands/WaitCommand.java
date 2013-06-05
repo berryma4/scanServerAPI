@@ -118,6 +118,13 @@ public class WaitCommand extends Commands {
     }
 
     public XmlWaitCommand toXml(){
-        return null;
+        XmlWaitCommand xmlWaitCommand = new XmlWaitCommand();
+        xmlWaitCommand.setAddress(this.address);
+        xmlWaitCommand.setComparison(this.comparison);
+        xmlWaitCommand.setDevice(this.device);
+        xmlWaitCommand.setTimeout(this.timeout);
+        xmlWaitCommand.setTolerance(this.tolerance);
+        xmlWaitCommand.setValue(this.value);
+        return xmlWaitCommand;
     }
 }

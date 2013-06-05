@@ -129,6 +129,14 @@ public class SetCommand extends Commands{
     }
 
     public XmlSetCommand toXml(){
-        return null;
+        XmlSetCommand xmlSetCommand = new XmlSetCommand();
+        xmlSetCommand.setAddress(this.address);
+        xmlSetCommand.setValue(this.value);
+        xmlSetCommand.setDevice(this.device);
+        xmlSetCommand.setReadback(this.readback);
+        xmlSetCommand.setWait(this.wait);
+        xmlSetCommand.setTolerance(this.tolerance);
+        xmlSetCommand.setTimeout(this.timeout);
+        return xmlSetCommand;
     }
 }
