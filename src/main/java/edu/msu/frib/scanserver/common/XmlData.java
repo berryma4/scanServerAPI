@@ -1,5 +1,6 @@
 package edu.msu.frib.scanserver.common;
 
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlElement;
 
@@ -21,7 +22,8 @@ public class XmlData {
     public XmlData(){
     }
 
-    @XmlElement
+    @XmlElementWrapper(name="devices")
+    @XmlElement(name="device")
     public List<String> getXmlDeviceList() {
         return devices;
     }

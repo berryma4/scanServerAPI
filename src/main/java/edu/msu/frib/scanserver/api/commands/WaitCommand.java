@@ -67,10 +67,6 @@ public class WaitCommand extends Commands {
             return self();
         }
 
-        XmlWaitCommand toXml(){
-            return null;
-        }
-
         public WaitCommand build(){
             return new WaitCommand(this);
         }
@@ -119,5 +115,9 @@ public class WaitCommand extends Commands {
 
     public double getValue() {
         return value;
+    }
+
+    public XmlWaitCommand toXml(){
+        return null;
     }
 }

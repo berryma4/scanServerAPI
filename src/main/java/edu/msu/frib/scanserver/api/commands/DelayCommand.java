@@ -33,10 +33,6 @@ public class DelayCommand extends Commands {
             return self();
         }
 
-        XmlDelayCommand toXml(){
-            return null;
-        }
-
         public DelayCommand build(){
             return new DelayCommand(this);
         }
@@ -65,5 +61,9 @@ public class DelayCommand extends Commands {
 
     public double getSeconds() {
         return seconds;
+    }
+
+    public XmlDelayCommand toXml(){
+        return null;
     }
 }

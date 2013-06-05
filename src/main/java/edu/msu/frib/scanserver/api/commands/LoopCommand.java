@@ -1,8 +1,12 @@
 package edu.msu.frib.scanserver.api.commands;
 
+import edu.msu.frib.scanserver.common.commands.XmlCommand;
 import edu.msu.frib.scanserver.common.commands.XmlLoopCommand;
 
 import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created with IntelliJ IDEA.
@@ -92,10 +96,6 @@ public class LoopCommand extends CommandComposite {
             return self();
         }
 
-        XmlLoopCommand toXml(){
-            return null;
-        }
-
         public LoopCommand build(){
             return new LoopCommand(this);
         }
@@ -159,5 +159,25 @@ public class LoopCommand extends CommandComposite {
 
     public double getTimeout() {
         return timeout;
+    }
+
+    public XmlLoopCommand toXml() throws NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        XmlLoopCommand xmlLoopCommand = new XmlLoopCommand();
+        xmlLoopCommand.setAddress(this.address);
+        xmlLoopCommand.setDevice(this.device);
+        xmlLoopCommand.setEnd(this.end);
+        xmlLoopCommand.setReadback(this.readback);
+        xmlLoopCommand.setStart(this.start);
+        xmlLoopCommand.setStep(this.step);
+        xmlLoopCommand.setTimeout(this.timeout);
+        xmlLoopCommand.setTolerance(this.tolerance);
+        xmlLoopCommand.setWait(this.wait);
+        List<XmlCommand> xmlCommands = new ArrayList<XmlCommand>();
+        for(Command command : this.getCommands()){
+            Method toXmlMethod = command.getClass().getMethod("toXml");
+            xmlCommands.add((XmlCommand)toXmlMethod.invoke(command));
+        }
+        xmlLoopCommand.setBody(xmlCommands);
+        return xmlLoopCommand;
     }
 }

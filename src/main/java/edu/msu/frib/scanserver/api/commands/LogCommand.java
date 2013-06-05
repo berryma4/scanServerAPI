@@ -50,18 +50,6 @@ public class LogCommand extends Commands {
             return self();
         }
 
-        XmlLogCommand toXml(){
-            XmlLogCommand xmlLogCommand = new XmlLogCommand();
-            List<XmlDevice> xmlDevices = new ArrayList<XmlDevice>();
-
-            for(String device : devices){
-                xmlDevices.add(new XmlDevice(device));
-            }
-            xmlLogCommand.setDevices(xmlDevices);
-
-            return xmlLogCommand;
-        }
-
         public LogCommand build(){
             return new LogCommand(this);
         }
@@ -93,5 +81,15 @@ public class LogCommand extends Commands {
 
     public List<String> getDevices() {
         return devices;
+    }
+
+    public XmlLogCommand toXml(){
+        XmlLogCommand xmlLogCommand = new XmlLogCommand();
+        List<XmlDevice> xmlDevices = new ArrayList<XmlDevice>();
+        for(String device : devices){
+            xmlDevices.add(new XmlDevice(device));
+        }
+        xmlLogCommand.setDevices(xmlDevices);
+        return xmlLogCommand;
     }
 }

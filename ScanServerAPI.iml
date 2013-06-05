@@ -12,6 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.8.1" level="project" />
+    <orderEntry type="library" name="Maven: org.epics:epics-util:0.2" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-client:1.17.1" level="project" />
     <orderEntry type="library" name="Maven: com.sun.jersey:jersey-core:1.17.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.guava:guava-collections:r03" level="project" />

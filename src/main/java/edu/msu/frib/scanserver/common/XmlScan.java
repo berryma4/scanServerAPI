@@ -1,7 +1,11 @@
 package edu.msu.frib.scanserver.common;
 
 
-import java.util.Date;
+
+
+import org.epics.util.time.Timestamp;
+import org.epics.util.time.TimeDuration;
+
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -19,18 +23,18 @@ public class XmlScan {
 
     private Long id;
     private String name;
-    private Date created;
+    private Timestamp created;
     private ScanState state;
-    private Date runtime;
+    private TimeDuration runtime;
     private Long percentage;
-    private Date finish;
+    private Timestamp finish;
     private String command;
     private String error;
 
     public XmlScan(){
     }
 
-    public XmlScan(Long id, String name, Date created, ScanState state, Date runtime, Long percentage, Date finish, String command, String error) {
+    public XmlScan(Long id, String name, Timestamp created, ScanState state, TimeDuration runtime, Long percentage, Timestamp finish, String command, String error) {
         this.id = id;
         this.name = name;
         this.created = created;
@@ -61,12 +65,12 @@ public class XmlScan {
     }
 
     @XmlElement
-    @XmlJavaTypeAdapter(DateAdapter.class)
-    public Date getCreated() {
+    @XmlJavaTypeAdapter(TimestampLongAdapter.class)
+    public Timestamp getCreated() {
         return created;
     }
 
-    public void setCreated(Date created) {
+    public void setCreated(Timestamp created) {
         this.created = created;
     }
 
@@ -80,12 +84,12 @@ public class XmlScan {
     }
 
     @XmlElement
-    @XmlJavaTypeAdapter(DateAdapter.class)
-    public Date getRuntime() {
+    @XmlJavaTypeAdapter(TimeDurationLongAdapter.class)
+    public TimeDuration getRuntime() {
         return runtime;
     }
 
-    public void setRuntime(Date runtime) {
+    public void setRuntime(TimeDuration runtime) {
         this.runtime = runtime;
     }
 
@@ -99,12 +103,12 @@ public class XmlScan {
     }
 
     @XmlElement
-    @XmlJavaTypeAdapter(DateAdapter.class)
-    public Date getFinish() {
+    @XmlJavaTypeAdapter(TimestampLongAdapter.class)
+    public Timestamp getFinish() {
         return finish;
     }
 
-    public void setFinish(Date finish) {
+    public void setFinish(Timestamp finish) {
         this.finish = finish;
     }
 

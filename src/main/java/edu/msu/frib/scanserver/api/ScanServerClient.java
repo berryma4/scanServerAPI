@@ -26,7 +26,7 @@ public interface ScanServerClient {
 
     public void delete(Long id);
 
-    public Long queueScan(String name, CommandSet.Builder commandSetBuilder);
+    public Long queueScan(String name, CommandSet commandSet);
 
     public void close();
 }

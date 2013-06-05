@@ -33,10 +33,6 @@ public class ScriptCommand extends Commands {
             return self();
         }
 
-        XmlScriptCommand toXml(){
-            return null;
-        }
-
         public ScriptCommand build(){
             return new ScriptCommand(this);
         }
@@ -65,5 +61,9 @@ public class ScriptCommand extends Commands {
 
     public String getPath() {
         return path;
+    }
+
+    public XmlScriptCommand toXml(){
+        return null;
     }
 }

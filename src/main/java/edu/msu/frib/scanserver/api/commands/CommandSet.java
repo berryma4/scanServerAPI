@@ -20,17 +20,6 @@ public class CommandSet extends CommandComposite {
 
     public static abstract class Builder<T extends Builder<T>> extends CommandComposite.Builder<T> {
 
-        public XmlCommandSet toXml() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
-            XmlCommandSet xmlCommandSet = new XmlCommandSet();
-            List<XmlCommand> xmlCommands = new ArrayList<XmlCommand>();
-            for(Command command : this.build().getCommands()){
-                Method toXmlMethod = command.getClass().getMethod("toXml");
-                xmlCommands.add((XmlCommand)toXmlMethod.invoke(new Object()));
-            }
-            xmlCommandSet.setCommands(xmlCommands);
-            return xmlCommandSet;
-        }
-
         public CommandSet build(){
             return new CommandSet(this);
         }
@@ -49,6 +38,17 @@ public class CommandSet extends CommandComposite {
 
     protected CommandSet(Builder<?> builder) {
         super(builder);
+    }
+
+    public XmlCommandSet toXml() throws ClassNotFoundException, NoSuchMethodException, InvocationTargetException, IllegalAccessException {
+        XmlCommandSet xmlCommandSet = new XmlCommandSet();
+        List<XmlCommand> xmlCommands = new ArrayList<XmlCommand>();
+        for(Command command : this.getCommands()){
+            Method toXmlMethod = command.getClass().getMethod("toXml");
+            xmlCommands.add((XmlCommand)toXmlMethod.invoke(command));
+        }
+        xmlCommandSet.setCommands(xmlCommands);
+        return xmlCommandSet;
     }
 
 }

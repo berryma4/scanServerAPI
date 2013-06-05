@@ -41,17 +41,19 @@ public class SSCManagerIT {
                 .create();
         Logger.getLogger(RawLoggingFilter.class.getName()).setLevel(Level.ALL);
         List<Scan> scans = ssc.getAllScans();
-        Scan scan = ssc.getScan(Long.valueOf(42));
-        scan.toString();
-        List<Command> commands = ssc.getScanCommands(Long.valueOf(42)).getCommands();
+
+
+        LogCommand log = LogCommand.builder().device("sim://gaussianNoise").build();
+        LoopCommand loop = LoopCommand.builder().device("loc://positioner").start(1).end(10).step(.5).add(log).build();
+        CommandSet commandSet = CommandSet.builder().add(loop).build();
+        Long id = ssc.queueScan("test",commandSet);
+
+        Data data = ssc.getScanData(id);
+        data.toString();
+        List<Command> commands = ssc.getScanCommands(id).getCommands();
         for(Command command : commands){
             command.toString();
         }
-
-        LogCommand log = LogCommand.builder().device("test").build();
-        LoopCommand loop2 = LoopCommand.builder().device("test").start(234).end(234).step(.01).add(log).build();
-        LoopCommand loop = LoopCommand.builder().device("test").start(234).end(234).step(.01).add(log).add(loop2).build();
-        CommandSet commandSet = CommandSet.builder().add(loop).build();
 
         Logger.getLogger(RawLoggingFilter.class.getName()).setLevel(Level.OFF);
 

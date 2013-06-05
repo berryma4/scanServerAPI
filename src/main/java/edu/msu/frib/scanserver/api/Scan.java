@@ -2,6 +2,8 @@ package edu.msu.frib.scanserver.api;
 
 import edu.msu.frib.scanserver.common.ScanState;
 import edu.msu.frib.scanserver.common.XmlScan;
+import org.epics.util.time.TimeDuration;
+import org.epics.util.time.Timestamp;
 
 import java.util.Date;
 
@@ -16,22 +18,22 @@ public class Scan {
 
     private final Long id;
     private final String name;
-    private final Date created;
+    private final Timestamp created;
     private final ScanState state;
-    private final Date runtime;
+    private final TimeDuration runtime;
     private final Long percentage;
-    private final Date finish;
+    private final Timestamp finish;
     private final String command;
     private final String error;
 
     public static class Builder {
         private Long id;
         private String name;
-        private Date created;
+        private Timestamp created;
         private ScanState state;
-        private Date runtime;
+        private TimeDuration runtime;
         private Long percentage;
-        private Date finish;
+        private Timestamp finish;
         private String command;
         private String error;
 
@@ -50,7 +52,7 @@ public class Scan {
             return scanBuilder;
         }
 
-        public static Builder scan(Long id, String name, Date created, ScanState state, Date runtime, Long percentage, Date finish, String command, String error) {
+        public static Builder scan(Long id, String name, Timestamp created, ScanState state, TimeDuration runtime, Long percentage, Timestamp finish, String command, String error) {
             Builder scanBuilder = new Builder();
             scanBuilder.id = id;
             scanBuilder.name = name;
@@ -106,7 +108,7 @@ public class Scan {
         return name;
     }
 
-    public Date getCreated() {
+    public Timestamp getCreated() {
         return created;
     }
 
@@ -114,7 +116,7 @@ public class Scan {
         return state;
     }
 
-    public Date getRuntime() {
+    public TimeDuration getRuntime() {
         return runtime;
     }
 
@@ -122,7 +124,7 @@ public class Scan {
         return percentage;
     }
 
-    public Date getFinish() {
+    public Timestamp getFinish() {
         return finish;
     }
 

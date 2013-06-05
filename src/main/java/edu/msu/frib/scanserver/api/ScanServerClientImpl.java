@@ -110,8 +110,7 @@ public class ScanServerClientImpl implements ScanServerClient {
                     .path(resourceData)
                     .accept(MediaType.APPLICATION_XML)
                     .get(XmlData.class);
-            return new Data();
-            //return xmlData.builder().fromXml(xmlData).build();
+            return Data.builder().fromXml(xmlData).build();
         }
     }
 
@@ -169,18 +168,18 @@ public class ScanServerClientImpl implements ScanServerClient {
     }
 
     @Override
-    public Long queueScan(String name, CommandSet.Builder commandSetBuilder) {
-        return wrappedSubmit(new QueueScan(name,commandSetBuilder));
+    public Long queueScan(String name, CommandSet commandSet) {
+        return wrappedSubmit(new QueueScan(name,commandSet));
     }
 
     private class QueueScan implements Callable<Long> {
         private final String name;
-        private final CommandSet.Builder commandSetBuilder;
+        private final CommandSet commandSet;
 
-        QueueScan(String name, CommandSet.Builder commandSetBuilder){
+        QueueScan(String name, CommandSet commandSet){
             super();
             this.name = name;
-            this.commandSetBuilder = commandSetBuilder;
+            this.commandSet = commandSet;
         }
 
         @Override
@@ -189,7 +188,7 @@ public class ScanServerClientImpl implements ScanServerClient {
                     .path(resourceScan)
                     .path(this.name)
                     .accept(MediaType.APPLICATION_XML)
-                    .post(XmlId.class,commandSetBuilder.toXml());
+                    .post(XmlId.class,commandSet.toXml());
             return xmlId.getId();
         }
     }

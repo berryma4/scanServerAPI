@@ -73,10 +73,6 @@ public class SetCommand extends Commands{
             return self();
         }
 
-        XmlSetCommand toXml(){
-            return null;
-        }
-
         public SetCommand build(){
             return new SetCommand(this);
         }
@@ -130,5 +126,9 @@ public class SetCommand extends Commands{
 
     public boolean isWait() {
         return wait;
+    }
+
+    public XmlSetCommand toXml(){
+        return null;
     }
 }

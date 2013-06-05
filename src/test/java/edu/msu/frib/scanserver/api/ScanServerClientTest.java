@@ -7,6 +7,8 @@ import java.util.List;
 
 import javax.ws.rs.core.MediaType;
 
+import org.epics.util.time.TimeDuration;
+import org.epics.util.time.Timestamp;
 import org.junit.Test;
 
 import static org.junit.Assert.assertTrue;
@@ -23,8 +25,8 @@ import edu.msu.frib.scanserver.api.ScanServerClientImpl;
 
 public class ScanServerClientTest {
 
-	private XmlScan xmlScan0001 = new XmlScan(1L, "test1", new Date(), ScanState.Aborted, new Date(), 100L, new Date(), "CMD", "");
-	private XmlScan xmlScan0002 = new XmlScan(2L, "test2", new Date(), ScanState.Aborted, new Date(), 100L, new Date(), "CMD", "");
+	private XmlScan xmlScan0001 = new XmlScan(1L, "test1", Timestamp.now(), ScanState.Aborted, TimeDuration.ofMinutes(1L), 100L, Timestamp.now(), "CMD", "");
+	private XmlScan xmlScan0002 = new XmlScan(2L, "test2", Timestamp.now(), ScanState.Aborted, TimeDuration.ofMinutes(1L), 100L, Timestamp.now(), "CMD", "");
 	
 	private List<XmlScan> xmlScanList = Arrays.asList( xmlScan0001, xmlScan0002 );
 	

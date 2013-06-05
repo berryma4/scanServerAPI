@@ -18,12 +18,12 @@ public class XmlSamples {
 
     private List<XmlValues> values;
 
-    @XmlElement
-    public List<XmlValues> getXmlValuesList() {
+    @XmlElement(name="values")
+    public List<XmlValues> getXmlValues() {
         return values;
     }
 
-    public void setXmlValuesList(List<XmlValues> values) {
+    public void setXmlValues(List<XmlValues> values) {
         this.values = values;
     }
 }

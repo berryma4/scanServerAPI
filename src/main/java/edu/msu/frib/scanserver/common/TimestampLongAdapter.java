@@ -1,5 +1,8 @@
 package edu.msu.frib.scanserver.common;
 
+
+import org.epics.util.time.Timestamp;
+
 import java.util.Date;
 
 /**
@@ -12,16 +15,16 @@ import java.util.Date;
 
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-public class DateAdapter extends XmlAdapter<Long, Date> {
+public class TimestampLongAdapter extends XmlAdapter<Long, Timestamp> {
 
     @Override
-    public Long marshal(Date v) throws Exception {
-        return v.getTime()/1000;
+    public Long marshal(Timestamp v) throws Exception {
+        return v.getSec();
     }
 
     @Override
-    public Date unmarshal(Long timeStamp) throws Exception {
-        return new Date(timeStamp*1000);
+    public Timestamp unmarshal(Long timeStamp) throws Exception {
+        return Timestamp.of(timeStamp,0);
     }
 
 }
