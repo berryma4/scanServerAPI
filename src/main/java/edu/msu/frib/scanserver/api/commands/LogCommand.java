@@ -85,6 +85,7 @@ public class LogCommand extends Commands {
 
     public XmlLogCommand toXml(){
         XmlLogCommand xmlLogCommand = new XmlLogCommand();
+        xmlLogCommand.setAddress(address);
         List<XmlDevice> xmlDevices = new ArrayList<XmlDevice>();
         for(String device : devices){
             xmlDevices.add(new XmlDevice(device));
