@@ -234,6 +234,8 @@ public class ScanServerClientImpl implements ScanServerClient {
 
     	private WebResource service = null;
     	
+    	private Client client = null;
+    	
         private ClientConfig clientConfig = null;
 
 
@@ -303,6 +305,18 @@ public class ScanServerClientImpl implements ScanServerClient {
         }
         
         /**
+         * set the {@link Client} to be used while creating the
+         * scanServer client connection.
+         *
+         * @param clientConfig
+         * @return {@link SSCBuilder}
+         */
+        public SSCBuilder withClient(Client client) {
+            this.client = client;
+            return this;
+        }
+        
+        /**
          * set the {@link ClientConfig} to be used while creating the
          * channelfinder client connection.
          *
@@ -338,6 +352,10 @@ public class ScanServerClientImpl implements ScanServerClient {
             	return new ScanServerClientImpl(this.service, this.executor);
             }
         	
+            if(this.client != null) {
+            	return new ScanServerClientImpl(this.uri, this.client, this.executor);
+            }
+            
             if (this.clientConfig != null) {
             	return new ScanServerClientImpl(this.uri, this.clientConfig, this.executor);
             }
@@ -367,6 +385,11 @@ public class ScanServerClientImpl implements ScanServerClient {
         client.addFilter(new RawLoggingFilter(Logger
                 .getLogger(RawLoggingFilter.class.getName())));
         client.setFollowRedirects(true);
+        service = client.resource(UriBuilder.fromUri(uri).build());
+        this.executor = executor;
+    }
+    
+    ScanServerClientImpl(URI uri, Client client, ExecutorService executor) {
         service = client.resource(UriBuilder.fromUri(uri).build());
         this.executor = executor;
     }
