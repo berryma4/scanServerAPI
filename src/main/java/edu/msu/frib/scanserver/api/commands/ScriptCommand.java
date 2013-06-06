@@ -64,6 +64,9 @@ public class ScriptCommand extends Commands {
     }
 
     public XmlScriptCommand toXml(){
-        return null;
+        XmlScriptCommand xmlScriptCommand = new XmlScriptCommand();
+        xmlScriptCommand.setAddress(this.address);
+        xmlScriptCommand.setPath(this.path);
+        return xmlScriptCommand;
     }
 }

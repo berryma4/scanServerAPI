@@ -15,11 +15,7 @@ public class XmlDelayCommand implements XmlCommand {
     private long address;
     private double seconds;
 
-    private XmlDelayCommand(){
-    }
-
-    public XmlDelayCommand(double seconds) {
-        this.seconds = seconds;
+    public XmlDelayCommand() {
     }
 
     @XmlElement

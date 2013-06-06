@@ -64,6 +64,9 @@ public class DelayCommand extends Commands {
     }
 
     public XmlDelayCommand toXml(){
-        return null;
+        XmlDelayCommand xmlDelayCommand = new XmlDelayCommand();
+        xmlDelayCommand.setAddress(this.address);
+        xmlDelayCommand.setSeconds(this.seconds);
+        return xmlDelayCommand;
     }
 }
