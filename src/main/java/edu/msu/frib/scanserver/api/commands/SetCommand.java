@@ -139,4 +139,34 @@ public class SetCommand extends Commands{
         xmlSetCommand.setTimeout(this.timeout);
         return xmlSetCommand;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof SetCommand) ) {
+    		return false;
+    	}
+    	SetCommand other = (SetCommand)o;
+    	if( address != other.address ) {
+    		return false;
+    	}
+    	if( tolerance != other.tolerance ) {
+    		return false;
+    	}
+    	if( timeout != other.timeout ) {
+    		return false;
+    	}
+    	if( !device.equals(other.device) ) {
+    		return false;
+    	}
+    	if( !value.equals(other.value) ) {
+    		return false;
+    	}
+    	if( !readback.equals(other.readback) ) {
+    		return false;
+    	}
+    	if( wait != other.wait ) {
+    		return false;
+    	}
+    	return true;
+    }
 }

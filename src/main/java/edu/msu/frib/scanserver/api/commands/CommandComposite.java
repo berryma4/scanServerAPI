@@ -71,4 +71,16 @@ public class CommandComposite implements Command {
     public List<Command> getCommands() {
         return commands;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof CommandComposite) ) {
+    		return false;
+    	}
+    	CommandComposite other = (CommandComposite)o;
+    	if( !commands.equals(other.commands) ) {
+    		return false;
+    	}
+    	return true;
+    }
 }

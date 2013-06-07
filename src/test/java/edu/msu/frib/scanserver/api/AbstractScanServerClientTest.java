@@ -57,8 +57,6 @@ public abstract class AbstractScanServerClientTest {
 		assertEquals(TEST_COMMAND_ONE_NAME, scan.getName());
 		
 		CommandComposite commands = client.getScanCommands(id);
-		System.out.println(commands);
-		System.out.println(commands.getCommands());
 		assertEquals(TEST_COMMAND_ONE, commands);
 		
 		Data data = client.getScanData(id);

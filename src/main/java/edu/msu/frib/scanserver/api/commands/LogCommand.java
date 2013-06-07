@@ -93,4 +93,19 @@ public class LogCommand extends Commands {
         xmlLogCommand.setDevices(xmlDevices);
         return xmlLogCommand;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof LogCommand) ) {
+    		return false;
+    	}
+    	LogCommand other = (LogCommand)o;
+    	if( address != other.address ) {
+    		return false;
+    	}
+    	if( !devices.equals(other.devices) ) {
+    		return false;
+    	}
+    	return true;
+    }
 }

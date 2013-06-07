@@ -69,4 +69,19 @@ public class DelayCommand extends Commands {
         xmlDelayCommand.setSeconds(this.seconds);
         return xmlDelayCommand;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof DelayCommand) ) {
+    		return false;
+    	}
+    	DelayCommand other = (DelayCommand)o;
+    	if( address != other.address ) {
+    		return false;
+    	}
+    	if( seconds != other.seconds ) {
+    		return false;
+    	}
+    	return true;
+    }
 }

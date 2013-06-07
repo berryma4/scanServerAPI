@@ -180,4 +180,40 @@ public class LoopCommand extends CommandComposite {
         xmlLoopCommand.setBody(xmlCommands);
         return xmlLoopCommand;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof LoopCommand) ) {
+    		return false;
+    	}
+    	LoopCommand other = (LoopCommand)o;
+    	if( address != other.address ) {
+    		return false;
+    	}
+    	if( !device.equals(other.device) ) {
+    		return false;
+    	}
+    	if( start != other.start ) {
+    		return false;
+    	}
+    	if( end != other.end ) {
+    		return false;
+    	}
+    	if( step != other.step ) {
+    		return false;
+    	}
+    	if( !readback.equals(other.readback) ) {
+    		return false;
+    	}
+    	if( wait != other.wait ) {
+    		return false;
+    	}
+    	if( tolerance != other.tolerance ) {
+    		return false;
+    	}
+    	if( timeout != other.timeout ) {
+    		return false;
+    	}
+    	return true;
+    }
 }

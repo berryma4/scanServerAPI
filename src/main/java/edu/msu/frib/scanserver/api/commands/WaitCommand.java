@@ -127,4 +127,31 @@ public class WaitCommand extends Commands {
         xmlWaitCommand.setValue(this.value);
         return xmlWaitCommand;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+	    if( !(o instanceof WaitCommand) ) {
+	    	return false;
+	    }
+	    WaitCommand other = (WaitCommand)o;
+	    if( address != other.address ) {
+	    	return false;
+	    }
+	    if( !comparison.equals(other.comparison) ) {
+	    	return false;
+	    }
+	    if( !device.equals(other.device) ) {
+	    	return false;
+	    }
+	    if( timeout != other.timeout ) {
+	    	return false;
+	    }
+	    if( tolerance != other.tolerance ) {
+	    	return false;
+	    }
+	    if( value != other.value ) {
+	    	return false;
+	    }
+	    return true;
+    }
 }

@@ -69,4 +69,19 @@ public class ScriptCommand extends Commands {
         xmlScriptCommand.setPath(this.path);
         return xmlScriptCommand;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof ScriptCommand) ) {
+    		return false;
+    	}
+    	ScriptCommand other = (ScriptCommand)o;
+    	if( address != other.address ) {
+    		return false;
+    	}
+    	if( !path.equals(other.path) ) {
+    		return false;
+    	}
+    	return true;
+    }
 }
