@@ -1,50 +1,24 @@
 package edu.msu.frib.scanserver.api;
 
-import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
 import java.io.InputStream;
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
-import java.util.Queue;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.MultivaluedMap;
-import javax.ws.rs.ext.MessageBodyWriter;
-
-import org.epics.util.time.TimeDuration;
-import org.epics.util.time.Timestamp;
 
 import com.sun.jersey.api.client.Client;
-import com.sun.jersey.api.client.ClientHandler;
 import com.sun.jersey.api.client.ClientHandlerException;
 import com.sun.jersey.api.client.ClientRequest;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.core.header.InBoundHeaders;
 
-import edu.msu.frib.scanserver.common.ScanState;
-import edu.msu.frib.scanserver.common.XmlData;
-import edu.msu.frib.scanserver.common.XmlDevice;
-import edu.msu.frib.scanserver.common.XmlId;
-import edu.msu.frib.scanserver.common.XmlSamples;
-import edu.msu.frib.scanserver.common.XmlScan;
-import edu.msu.frib.scanserver.common.XmlValues;
-import edu.msu.frib.scanserver.common.commands.XmlCommand;
 import edu.msu.frib.scanserver.common.commands.XmlCommandSet;
-import edu.msu.frib.scanserver.common.commands.XmlLogCommand;
-import edu.msu.frib.scanserver.common.commands.XmlLoopCommand;
 
 public class ScanServerClientUT extends AbstractScanServerClientTest {
 
@@ -52,34 +26,66 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 	
 	protected static Pattern SCAN_DATA_PATH_PATTERN = Pattern.compile("/scan/([^/]+)/data");
 	
-	protected static Pattern SCAN_CMDS_PATH_PATTERN = Pattern.compile("/scan/([^/]+)/commands");
+	protected static Pattern SCAN_CMDS_PATH_PATTERN = Pattern.compile("/scan/([^/]+)/commands");	
 	
-	protected static String TEST_COMMAND_ONE_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"yes\"?>" + 
-	                                               "<commands>" +
-	                                                   "<loop>" + 
-	                                                       "<address>0</address>" +
-	                                                       "<body>" +
-	                                                           "<log>" +
-	                                                           "<address>1</address>" +
-	                                                           "<devices>" +
-	                                                               "<device>sim://gaussianNoise</device>" +
-	                                                           "</devices>" +
-	                                                           "<devices>" +
-	                                                               "<device>loc://positioner</device>" +	 
-	                                                           "</devices>" +
-	                                                           "</log>" +
-	                                                       "</body>" +
-	                                                       "<device>loc://positioner</device>" +
-	                                                       "<end>10.0</end>" +
-	                                                       "<readback></readback>" +
-	                                                       "<start>0.0</start>" +
-	                                                       "<step>1.0</step>" +
-	                                                       "<timeout>0.0</timeout>" +
-	                                                       "<tolerance>0.1</tolerance>" +
-	                                                       "<wait>false</wait>" +
-	                                                   "</loop>" +
-	                                               "</commands>";
 
+	
+	protected static String TEST_SCAN_ONE_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\" standalone=\"no\"?>\n" +
+                                                "<scan>\n" +
+                                                "  <id>%d</id>\n" +
+                                                "  <name>" + TEST_SCAN_CMDS_ONE_NAME + "</name>\n" +
+                                                "  <created>1370641269356</created>\n" +
+                                                "  <state>Finished</state>\n" +
+                                                "  <runtime>1000</runtime>\n" +
+                                                "  <percentage>0</percentage>\n" +
+                                                "  <finish>1370641270356</finish>\n" +
+                                                "  <command/>\n" +
+                                                "</scan>\n";
+	
+	protected static String TEST_SCAN_CMDS_ONE_XML	= "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+	                                                  "<commands>\n" +
+	                                                  "  <loop>\n" +
+	                                                  "    <address>0</address>\n" +
+	                                                  "    <device>loc://positioner</device>\n" +
+	                                                  "    <start>0.0</start>\n" +
+	                                                  "    <end>10.0</end>\n" +
+	                                                  "    <step>1.0</step>\n" +
+	                                                  "    <wait>false</wait>\n" +
+	                                                  "    <tolerance>0.1</tolerance>\n" +
+	                                                  "    <body>\n" +
+	                                                  "      <log>\n" +
+	                                                  "        <address>1</address>\n" +
+	                                                  "        <devices>\n" +
+	                                                  "          <device>sim://gaussianNoise</device>\n" +
+	                                                  "        </devices>\n" +
+	                                                  "      </log>\n" +
+	                                                  "    </body>\n" +
+	                                                  "  </loop>\n" +
+	                                                  "</commands>\n";
+	
+	protected static String TEST_SCAN_DATA_ONE_XML = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n" +
+	                                                 "<data>\n" +
+	                                                 "  <devices>\n" +
+	                                                 "    <device>sim://gaussianNoise</device>\n" +
+	                                                 "  </devices>\n" +
+	                                                 "  <samples>\n" +
+	                                                 "    <values>\n" +
+	                                                 "      <time>1370641270356</time>\n" +
+	                                                 "      <value>1.0</value>\n" +
+	                                                 "    </values>\n" +
+	                                                 "    <values>\n" +
+	                                                 "      <time>1370641270364</time>\n" +
+	                                                 "      <value>2.0</value>\n" +
+	                                                 "    </values>\n" +
+	                                                 "    <values>\n" +
+	                                                 "      <time>1370641270368</time>\n" +
+	                                                 "      <value>3.0</value>\n" +
+	                                                 "    </values>\n" +
+	                                                 "  </samples>\n" +
+	                                                 "</data>\n";
+	
+	protected static String TEST_SCAN_ID_XML = "<id>%d</id>\n";
+	
 	
 	private static TestScanServerHandler handler = new TestScanServerHandler();
 	
@@ -92,17 +98,17 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 	}
 
 	
-	private static class TestScanServerHandler implements ClientHandler {
+	private static class TestScanServerHandler extends AbstractClientHandler {
 		
 		private Client client = new Client(this);
 		
-		private Map<Long,XmlScan> scans = new LinkedHashMap<Long,XmlScan>();
-		private Map<Long,XmlData> scanData = new LinkedHashMap<Long,XmlData>();
-		private Map<Long,XmlCommandSet> scanCmds = new LinkedHashMap<Long,XmlCommandSet>();
+		private Map<Long,String> scans = new LinkedHashMap<Long,String>();
+		private Map<Long,String> scanData = new LinkedHashMap<Long,String>();
+		private Map<Long,String> scanCmds = new LinkedHashMap<Long,String>();
 		
 		private long nextScanId = 1;
-		private boolean firstQueue = true;
 		
+		@Override
 		public Client getClient() {
 			return client;
 		}
@@ -146,6 +152,8 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 		
 		protected ClientResponse getScan(String name, ClientRequest request) {
 			
+			printRequest(null);
+			
 			Long id;
 			try {
 				id = Long.parseLong(name);
@@ -154,29 +162,27 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 				id = 0L;
 			}
 			
-			int status;
-			InputStream data;
-			XmlScan scan = scans.get(id);
-			if( scan != null ) {
-				if( scan.getState() == ScanState.Running ) {
-					Timestamp now = Timestamp.now();
-					scan.setRuntime(now.durationBetween(scan.getCreated()));
-				}
-				status = 200;
-				data = new ByteArrayInputStream(toXml(scan, XmlScan.class, request.getHeaders()));
-			} else {
-				status = 500;
-				data = new ByteArrayInputStream(new byte[0]);
+			int responseStatus = 200;
+			String responseString = scans.get(id);
+			if( responseString == null ) {
+				responseStatus = 500;
+				responseString = "";
 			}
 			
+			InputStream responseStream = new ByteArrayInputStream(responseString.getBytes());
+			
 			InBoundHeaders headers = new InBoundHeaders();
-			headers.add("Content-Type", MediaType.APPLICATION_XML);			
-			return new ClientResponse(status, headers, data, client.getMessageBodyWorkers());
+			headers.add("Content-Type", MediaType.APPLICATION_XML);
+			
+			printResponse(responseString);
+			return new ClientResponse(responseStatus, headers, responseStream, client.getMessageBodyWorkers());
 		}
 		
 		
 		protected ClientResponse getScanData(String name, ClientRequest request) {
 			
+			printRequest(null);
+			
 			Long id;
 			try {
 				id = Long.parseLong(name);
@@ -185,24 +191,26 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 				id = 0L;
 			}
 			
-			int status;
-			InputStream response;
-			XmlData data = scanData.get(id);
-			if( data != null ) {
-				status = 200;
-				response = new ByteArrayInputStream(toXml(data, XmlData.class, request.getHeaders()));
-			} else {
-				status = 500;
-				response = new ByteArrayInputStream(new byte[0]);
-			}
+			int responseStatus = 200;
+			String responseString = scanData.get(id);
+			if( responseString == null ) {
+				responseStatus = 500;
+				responseString = "";
+			} 
+			
+			InputStream responseStream = new ByteArrayInputStream(responseString.getBytes());
 			
 			InBoundHeaders headers = new InBoundHeaders();
 			headers.add("Content-Type", MediaType.APPLICATION_XML);			
-			return new ClientResponse(status, headers, response, client.getMessageBodyWorkers());
+			
+			printResponse(responseString);
+			return new ClientResponse(responseStatus, headers, responseStream, client.getMessageBodyWorkers());
 		}
 		
 		protected ClientResponse getScanCommands(String name, ClientRequest request) {
 			
+			printRequest(null);
+			
 			Long id;
 			try {
 				id = Long.parseLong(name);
@@ -211,20 +219,20 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 				id = 0L;
 			}
 			
-			int status;
-			InputStream response;
-			XmlCommandSet cmds = scanCmds.get(id);
-			if( cmds != null ) {
-				status = 200;
-				response = new ByteArrayInputStream(toXml(cmds, XmlCommandSet.class, request.getHeaders()));
-			} else {
-				status = 500;
-				response = new ByteArrayInputStream(new byte[0]);
+			int responseStatus = 200;
+			String responseString = scanCmds.get(id);
+			if( responseString == null ) {
+				responseStatus = 500;
+				responseString = "";
 			}
 			
+			InputStream responseStream = new ByteArrayInputStream(responseString.getBytes());
+			
 			InBoundHeaders headers = new InBoundHeaders();
-			headers.add("Content-Type", MediaType.APPLICATION_XML);			
-			return new ClientResponse(status, headers, response, client.getMessageBodyWorkers());
+			headers.add("Content-Type", MediaType.APPLICATION_XML);
+			
+			printResponse(responseString);
+			return new ClientResponse(responseStatus, headers, responseStream, client.getMessageBodyWorkers());
 		}
 		
 		protected ClientResponse queueScan(String name, ClientRequest request) {
@@ -233,96 +241,28 @@ public class ScanServerClientUT extends AbstractScanServerClientTest {
 			assertNotNull(entity);
 			assertSame(XmlCommandSet.class, entity.getClass());
 			XmlCommandSet commandSet = (XmlCommandSet)entity;
+			printRequest(toXml(commandSet, XmlCommandSet.class, request.getHeaders()));
 			
-			if( name.equals(TEST_COMMAND_ONE_NAME) ) {
-				String xmlCommandSet = new String(toXml(commandSet, XmlCommandSet.class, request.getHeaders()));
-				assertEquals(xmlCommandSet, TEST_COMMAND_ONE_XML);
-			}
-		
-			XmlId id = new XmlId();
-			id.setId(nextScanId);
+			Long id = nextScanId;
 			nextScanId += 1;
 			
-			scanCmds.put(id.getId(), commandSet);
-			
-			ScanState state = ScanState.Paused;
-			if( firstQueue ) {
-				state = ScanState.Running;
-				firstQueue = false;
+			if( name.equals(TEST_SCAN_CMDS_ONE_NAME) ) {
+				scans.put(id, String.format(TEST_SCAN_ONE_XML, id));
+				scanCmds.put(id, TEST_SCAN_CMDS_ONE_XML);
+				scanData.put(id, TEST_SCAN_DATA_ONE_XML);
+			} else {
+				throw new ClientHandlerException("Queue scan unexpected scan name: " + name);
 			}
 			
-			Timestamp now = Timestamp.now();
-			TimeDuration duration = now.durationBetween(now);
-			
-			scans.put(id.getId(), new XmlScan(id.getId(), name, now, state, duration, 0L, now, "CMD", ""));
-			
-			List<String> devices = new ArrayList<String>();
-			
-			// Discover all the logged devices in CommandSet.
-			Queue<XmlCommand> commands = new LinkedList<XmlCommand>(commandSet.getCommands());
-			while(!commands.isEmpty()) {
-				XmlCommand command = commands.poll();
-				if( command instanceof XmlCommandSet ) {
-					commands.addAll(((XmlCommandSet)command).getCommands());
-				} else if( command instanceof XmlLoopCommand ) {
-					commands.addAll(((XmlLoopCommand)command).getBody());
-				} else if( command instanceof XmlLogCommand ) {
-					for(XmlDevice device : ((XmlLogCommand)command).getDevices()) {
-						devices.add(device.getDevice());
-					}
-				}
-			}
-			
-			System.out.println(devices);
-			
-			XmlData data = new XmlData();
-			data.setXmlDeviceList(devices);
-			
-			XmlSamples samples = new XmlSamples();
-			data.setSamples(samples);
-			
-			List<XmlValues> values = new ArrayList<XmlValues>();
-			samples.setXmlValues(values);
-			
-			for(float v=0.0F; v<10.0F; v += 1.0) {
-				XmlValues value = new XmlValues();
-				value.setTime(Timestamp.now());
-				value.setValueList(new ArrayList<Float>());
-				for(int i=0; i<devices.size(); i++) {
-					value.getValueList().add(v);
-				}
-				values.add(value);
-			}
-			
-			scanData.put(id.getId(), data);
+			String responseString = String.format(TEST_SCAN_ID_XML, id);
+			InputStream responseStream = new ByteArrayInputStream(responseString.getBytes());
 			
 			InBoundHeaders headers = new InBoundHeaders();
 			headers.add("Content-Type", MediaType.APPLICATION_XML);
-				
-			InputStream response = new ByteArrayInputStream(toXml(id, XmlId.class, request.getHeaders()));
 			
-			return new ClientResponse(200, headers, response, client.getMessageBodyWorkers());
+			printResponse(responseString);
+			return new ClientResponse(200, headers, responseStream, client.getMessageBodyWorkers());
 		}
 		
-		
-		private <T> byte[] toXml(T t, Class<T> type, MultivaluedMap<String,Object> headers) {
-			
-			Client client = getClient();
-			Annotation[] annotations = new Annotation[0];
-			ByteArrayOutputStream output = new ByteArrayOutputStream();
-			
-			MessageBodyWriter<T> mbw = client.getMessageBodyWorkers().getMessageBodyWriter(type, null, annotations, MediaType.APPLICATION_XML_TYPE);
-			assertNotNull("No MessageBodyWriter found for media type application/xml", mbw);
-			
-			try {
-				mbw.writeTo(t, type, null, annotations, MediaType.APPLICATION_XML_TYPE, headers, output);
-			}
-			catch(IOException e) {
-				throw new AssertionError("Error will writing object to XML", e);
-			}
-			
-			return output.toByteArray();
-		}	
 	}
 }
-  

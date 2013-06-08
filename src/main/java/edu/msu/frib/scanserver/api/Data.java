@@ -99,4 +99,23 @@ public class Data {
     public List<Object> getValues() {
         return values;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+    	if( !(o instanceof Data) ) {
+    		return false;
+    	}
+    	Data other = (Data)o;
+    	if( !names.equals(other.names) ) {
+    		return false;
+    	}
+    	if( !types.equals(other.types) ) {
+    		return false;
+    	}
+    	if( !values.equals(other.values) ) {
+    		return false;
+    	}
+    	return true;
+    }
 }
+ 
