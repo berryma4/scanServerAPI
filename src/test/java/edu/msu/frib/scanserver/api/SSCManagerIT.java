@@ -3,6 +3,8 @@ package edu.msu.frib.scanserver.api;
 import static edu.msu.frib.scanserver.api.commands.LoopCommand.Builder.*;
 import static edu.msu.frib.scanserver.api.commands.LogCommand.Builder.*;
 import edu.msu.frib.scanserver.api.ScanServerClientImpl.SSCBuilder;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -42,8 +44,10 @@ public class SSCManagerIT {
         Logger.getLogger(RawLoggingFilter.class.getName()).setLevel(Level.ALL);
         List<Scan> scans = ssc.getAllScans();
 
-
-        LogCommand log = LogCommand.builder().device("sim://gaussianNoise").build();
+        List<String> devices = new ArrayList<String>();
+        devices.add("sim://gaussianNoise");
+        devices.add("loc://positioner");
+        LogCommand log = LogCommand.builder().devices(devices).build();
         LoopCommand loop = LoopCommand.builder().device("loc://positioner").start(1).end(10).step(.5).add(log).build();
         CommandSet commandSet = CommandSet.builder().add(loop).build();
         Long id = ssc.queueScan("test",commandSet);

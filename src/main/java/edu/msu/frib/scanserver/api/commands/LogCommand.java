@@ -1,9 +1,7 @@
 package edu.msu.frib.scanserver.api.commands;
 
-import edu.msu.frib.scanserver.common.XmlDevice;
 import edu.msu.frib.scanserver.common.commands.XmlLogCommand;
 
-import javax.xml.bind.annotation.XmlElement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,11 +39,7 @@ public class LogCommand extends Commands {
 
         public T fromXml (XmlLogCommand xmlLogCommand){
             this.address = xmlLogCommand.getAddress();
-            List<String> devices = new ArrayList<String>();
-            for(XmlDevice xmlDevice:xmlLogCommand.getDevices()){
-                devices.add(xmlDevice.getDevice());
-            }
-            this.devices = Collections.unmodifiableList(devices);
+            this.devices = Collections.unmodifiableList(xmlLogCommand.getXmlDeviceList());
 
             return self();
         }
@@ -86,11 +80,7 @@ public class LogCommand extends Commands {
     public XmlLogCommand toXml(){
         XmlLogCommand xmlLogCommand = new XmlLogCommand();
         xmlLogCommand.setAddress(address);
-        List<XmlDevice> xmlDevices = new ArrayList<XmlDevice>();
-        for(String device : devices){
-            xmlDevices.add(new XmlDevice(device));
-        }
-        xmlLogCommand.setDevices(xmlDevices);
+        xmlLogCommand.setXmlDeviceList(devices);
         return xmlLogCommand;
     }
     

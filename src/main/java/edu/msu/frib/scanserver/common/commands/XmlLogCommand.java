@@ -1,8 +1,7 @@
 package edu.msu.frib.scanserver.common.commands;
 
-import edu.msu.frib.scanserver.common.XmlDevice;
-
 import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +16,7 @@ import java.util.List;
 @XmlRootElement(name = "log")
 public class XmlLogCommand implements XmlCommand {
     private long address;
-    private List<XmlDevice> devices = new ArrayList<XmlDevice>();
+    private List<String> devices = new ArrayList<String>();
 
     public XmlLogCommand() {
     }
@@ -35,12 +34,13 @@ public class XmlLogCommand implements XmlCommand {
         this.address = address;
     }
 
-    @XmlElement
-    public List<XmlDevice> getDevices() {
+    @XmlElementWrapper(name="devices")
+    @XmlElement(name="device")
+    public List<String> getXmlDeviceList() {
         return devices;
     }
 
-    public void setDevices(List<XmlDevice> devices) {
+    public void setXmlDeviceList(List<String> devices) {
         this.devices = devices;
     }
 
